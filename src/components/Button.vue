@@ -15,13 +15,13 @@ export default {
 
 
 <template>
-    <button>
+    <button class="button">
         {{ text }}
     </button>
 </template>
 
 <style>
-button {
+.button {
     margin-top: v-bind(marginTop);
     width: 120px;
     height: 40px;
@@ -36,7 +36,7 @@ button {
 
 }
 
-button:hover {
+.button:hover {
     background-color: v-bind(hoverColor);
     transition: 0.4s;
 }

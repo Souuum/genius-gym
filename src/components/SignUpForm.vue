@@ -24,7 +24,7 @@ export default {
             <TextInput :placeHolder="'Email'" :name="'email'"></TextInput>
             <PasswordInput></PasswordInput>
             <Button :text="'Sign up'" :textColor="'var(--lesstransparent)'" :color="'var(--transparent)'"
-                :hoverColor="'var(--lesstransparent)'" :marginTop="'10px'">Submit</Button>
+                :hoverColor="'var(--lesstransparent)'" :marginTop="'40px'">Submit</Button>
         </form>
     </div>
 </template>
@@ -32,7 +32,7 @@ export default {
 <style>
 .form-container {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;

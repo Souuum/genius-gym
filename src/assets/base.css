@@ -1,4 +1,8 @@
 /* color palette from <https://github.com/vuejs/theme> */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --vt-c-white: #EDF2F4;
   --vt-c-white-soft: #f8f8f8;
@@ -21,15 +25,18 @@
   --vt-c-text-dark-2: var(--vt-c-indigo);
 
   --primary: #FB4B4E;
-  --secondary: #FF686B;
+  --secondary: #1a1b37;
+  --secondary-light: #2a2b57;
   --dark: #001011;
-  --white: #EDF2F4;
+  --white: #fbfffe;
   --lighter: #8D99AE;
-  --accent: #E27591;
-  --accent2: #EC9550;
+  --accent: #6466E9;
+  --accent2: #C4FCEF;
+  --accent3: #00C9A7;
   --transparent: rgba(0, 0, 0, 0.1);
   --lesstransparent: rgba(0, 0, 0, 0.3);
   --cleartransparent: rgba(255, 255, 255, 0.3);
+
 }
 
 /* semantic color variables for this project */
@@ -73,13 +80,14 @@
 }
 
 body {
-  min-height: 100vh;
+  width: 100%;
   color: var(--color-text);
-  background: var(--color-background);
+  background-color: var(--secondary);
+
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif, 'ASAP';
   font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
