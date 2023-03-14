@@ -10,7 +10,7 @@ export default {
 </script>
 
 <template>
-    <div class="nav">
+    <div class="nav bg-secondary w-full">
         <CustomMenu></CustomMenu>
         <nav class="menu">
             <RouterLink to="/">
@@ -41,7 +41,6 @@ export default {
     align-items: flex-end;
     /* align-items: center; */
     z-index: 10;
-    min-height: 80px;
 
 }
 

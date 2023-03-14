@@ -128,9 +128,9 @@ export default {
                 <ul
                   class="mt-1 flex-col justify-start text-sm leading-4"
                 >
-                  <li class="w-full rounded-t-lg bg-secondary px-4 py-2 font-medium text-white">{{ exercise.description }}</li>
-                  <li class="w-full bg-secondary px-4 py-2 font-medium text-white">{{ exercise.Workout_Exercises.nbReps + ' reps' }}</li>
-                  <li class="w-full rounded-b-lg bg-secondary px-4 py-2 font-medium text-white">{{ exercise.Workout_Exercises.nbSets + ' sets' }}</li>
+                  <li class="w-full rounded-t-lg bg-secondary-lighter px-4 py-2 font-medium text-white">{{ exercise.description }}</li>
+                  <li class="w-full bg-secondary-lighter px-4 py-2 font-medium text-white">{{ exercise.Workout_Exercises.nbReps + ' reps' }}</li>
+                  <li class="w-full rounded-b-lg bg-secondary-lighter px-4 py-2 font-medium text-white">{{ exercise.Workout_Exercises.nbSets + ' sets' }}</li>
                 </ul>
             </DisclosurePanel>
             </Disclosure>

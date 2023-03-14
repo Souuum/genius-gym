@@ -1,19 +1,22 @@
 <script>
 import SignUpButton from '../components/SignUpButton.vue';
 import CirclePictureFrame from '../components/CirclePictureFrame.vue';
+import WorkoutView from './WorkoutView.vue';
 
 export default {
     'name': "HomeView",
     components: {
-        SignUpButton,
-        CirclePictureFrame
-    },
+    SignUpButton,
+    CirclePictureFrame,
+    WorkoutView
+},
 };
 
 </script>
 
 <template>
     <div class="container">
+    <section class="home">
         <div class="flex float-right mr-20 mt-10">
         <CirclePictureFrame v-bind:style="{ 'background-image': 'url(../../public/images/pexels-murilo-botelho-1865131.jpg)' }" :borderRadius="'60px'"></CirclePictureFrame>
         </div>
@@ -29,9 +32,18 @@ export default {
       class="w-10 h-10 animate-bounce stroke-primary stroke-2 absolute top-40">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg></div>
+</section>
+<section class="workouts flex flex-col justify-center ">
+    <h1 class="text-white text-6xl font-bold text-center">Some of our Workouts</h1>
+    <WorkoutView></WorkoutView>
+</section>
     </div>
+
 </template>
 
 
 <style> 
+section{
+    height: 80vh;
+}
 </style>

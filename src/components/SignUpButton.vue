@@ -11,7 +11,7 @@ export default {
 
 
 <template>
-    <button class="signup">
+    <button class="signup bg-secondary-light hover:bg-primary duration-300">
         <RouterLink to="/signUp" id="signup-route" class="sutext">Sign up</RouterLink>
     </button>
 </template>
@@ -46,8 +46,5 @@ export default {
     color: var(--white);
 
 }
-.signup:hover {
-    background-color: var(--primary);
-    transition: 0.4s;
-}
+
 </style>
