@@ -13,6 +13,9 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
 
+## Font may not be apply and has to be installed locally (for now). See files in repo
+
+
 ```sh
 npm install
 ```
@@ -29,4 +32,3 @@ npm run dev
 npm run build
 ```
 
-## Font may not be apply and has to be installed locally (for now). See files in repo
