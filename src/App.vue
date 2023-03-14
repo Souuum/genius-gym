@@ -12,6 +12,8 @@ import NavBar from './components/NavBar.vue';
         <component :is="Component" ::key="$route.path"></component>
       </Transition>
 
+
+
     </router-view>
 
 

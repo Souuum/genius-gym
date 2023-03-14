@@ -1,70 +1,37 @@
 <script>
-import NavBar from '../components/NavBar.vue';
-import BigPanel from '../components/BigPanel.vue';
 import SignUpButton from '../components/SignUpButton.vue';
-import "../assets/colors";
-import { PRIMARY, WHITE } from '../assets/colors';
 import CirclePictureFrame from '../components/CirclePictureFrame.vue';
 
-const img =[
-    {   name: 'img1',
-        url: '../../public/images/pexels-murilo-botelho-1865131.jpg'},
-
-]
 export default {
     'name': "HomeView",
-    beforeMount() {
-        console.log(PRIMARY)
-    },
     components: {
-        NavBar,
-        BigPanel,
         SignUpButton,
         CirclePictureFrame
     },
-    setup() {
-        return { PRIMARY, WHITE };
-    }
-
 };
 
 </script>
 
 <template>
     <div class="container">
-        <div class="hero">
-            <p>Workout programs made by you with a wide variety of exercises for everyone</p>
-            <SignUpButton></SignUpButton>
-        </div>
-        <div>
+        <div class="flex float-right mr-20 mt-10">
         <CirclePictureFrame v-bind:style="{ 'background-image': 'url(../../public/images/pexels-murilo-botelho-1865131.jpg)' }" :borderRadius="'60px'"></CirclePictureFrame>
         </div>
+        <div class="flex-col max-w-3xl mx-20 mt-52">
+            <p class="text-white text-5xl font-semibold">Workout programs made by 
+            <span class="text-primary text-5xl font-semibold">you</span>
+            with a wide variety of exercises for 
+            <span class="text-primary text-5xl font-semibold">everyone</span></p>
+            <SignUpButton></SignUpButton>
+        </div>
+        <div class="flex justify-center self-end w-full min-h-full bottom-0">
+        <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"
+      class="w-10 h-10 animate-bounce stroke-primary stroke-2 absolute top-40">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg></div>
     </div>
 </template>
 
 
-<style> .container {
-     transition: 0.4s;
-     width: 100%;
-     height: 90vh;
- }
-
- .hero {
-     max-width: 800px;
-     margin-left: 80px;
-     margin-top: 200px;
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
- }
-
- .hero p {
-     background-clip: border-box;
-     background: radial-gradient(ellipse farthest-corner at bottom left, #C4FCEF 60%, #74E6F2 100%);
-     -webkit-background-clip: text;
-     -webkit-text-fill-color: transparent;
-     color: var(--accent2grad);
-     font-size: 48px;
-     font-weight: 600;
- }
+<style> 
 </style>

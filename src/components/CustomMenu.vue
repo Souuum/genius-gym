@@ -12,7 +12,7 @@ import { RouterLink } from 'vue-router';
     },
     {
       name: 'Workouts',
-      href: '##',
+      href: '/workout',
     },
     {
       name: 'Custom Programs',

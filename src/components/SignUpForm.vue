@@ -40,7 +40,7 @@ export default {
 
 #signup {
     margin: 40px;
-    background-color: var(--cleartransparent);
+    background-color: var(--secondary-light);
     border-radius: 5px;
     width: 600px;
     height: 600px;

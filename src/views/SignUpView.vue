@@ -1,11 +1,8 @@
 <script>
-import NavBar from '../components/NavBar.vue';
-import "../assets/colors";
 import SignUpForm from '../components/SignUpForm.vue';
 export default {
     'name': "SignUpView",
     components: {
-        NavBar,
         SignUpForm,
     },
 };
