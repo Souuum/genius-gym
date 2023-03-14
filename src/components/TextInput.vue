@@ -4,9 +4,11 @@ export default {
     props: {
         placeHolder: String,
         name: String,
-    }
+    },
+
 
 }
+
 </script>
 
 <template>
