@@ -1,16 +1,20 @@
 # genius-gym
 
-This template should help get you started developing with Vue 3 in Vite.
+Web Project for our web course at the University of Concordia
+
+See Back-end :
+
+https://github.com/Souuum/genius-gym-server
 
 ## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
+
+Font may not be applied and has to be installed locally (for now). See files in repo
+
 
 ```sh
 npm install
@@ -27,3 +31,4 @@ npm run dev
 ```sh
 npm run build
 ```
+
