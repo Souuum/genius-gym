@@ -10,7 +10,8 @@ export default {
 </script>
 
 <template>
-    <div class="nav bg-secondary w-full">
+    <div class="flex justify-center items-center justify-items-center">
+        <div class="nav bg-secondary w-full flex items-center">
         <CustomMenu></CustomMenu>
         <nav class="menu">
             <RouterLink to="/">
@@ -25,11 +26,15 @@ export default {
             <RouterLink to="/">
                 <a class="route">Custom Program</a>
             </RouterLink>
-            <RouterLink to="/login">
-                <a class="route">Log in</a>
-            </RouterLink>
+ 
+
         </nav>
+        <RouterLink to="/login">
+                <a id="log"  class="route mr-10">Log in</a>
+            </RouterLink>
+        </div>
     </div>
+
 </template>
 
 
@@ -86,6 +91,10 @@ export default {
 }
 
 @media screen and (max-width: 800px) {
+
+    #log{
+        display: none;
+    }
 
     .hamburger,
     .toggle {

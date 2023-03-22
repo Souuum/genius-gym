@@ -2,6 +2,7 @@
 import TextInput from './TextInput.vue';
 import PasswordInput from './PasswordInput.vue';
 import Button from './Button.vue';
+import { RouterLink } from 'vue-router';
 export default {
     name: "SignInForm",
     props: {
@@ -9,44 +10,32 @@ export default {
     components: {
         TextInput,
         PasswordInput,
-        Button
+        Button,
+        RouterLink
     }
 
 }
 </script>
 
 <template>
-    <div class="form-container">
-        <form id="signin">
-            <h1> Sign In</h1>
+    <div class="form-container flex items-center justify-center">
+        <form id="signin" class="bg-secondary-light pt-10 pr-40 pl-40 pb-10 flex-col items-center justify-items-center justify-center rounded-lg">
             <TextInput :placeHolder="'Email'" :name="'email'"></TextInput>
             <PasswordInput></PasswordInput>
-            <Button :text="'Sign in'" :textColor="'var(--lesstransparent)'" :color="'var(--transparent)'"
-                :hoverColor="'var(--lesstransparent)'" :marginTop="'40px'">Submit</Button>
+            <Button :text="'Sign in'"
+            class=" self-center mt-10 w-32 h-10 rounded-md bg-secondary hover:bg-primary duration-300 font-medium text-white">Submit</Button>
+            <RouterLink to="/signUp" id="signup-route" class="text-white ml-3 hover:text-primary">Or sign up</RouterLink>
+
+
         </form>
     </div>
 </template>
 
 <style>
 .form-container {
-    width: 100%;
     height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-#signin {
-    margin: 40px;
-    background-color: var(--secondary-light);
-    border-radius: 5px;
-    width: 600px;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
 h1 {
     color: var(--white);
