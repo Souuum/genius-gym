@@ -99,11 +99,7 @@ export default {
         <h3 class="text-l font-bold leading-5 ">
         {{ post.name }}
         </h3>
-        <ul
-                  class="mt-1 flex space-x-1 text-s leading-4 text-gray-500"
-                >
-                  <li class="font-medium text-white">{{ post.description }}</li>
-                </ul>
+        <p class="font-medium text-white">{{ post.description }}</p>
                 <ChevronDownIcon
             :class="open ? 'rotate-180 transform' : ''"
             class="h-8 w-8 text-white"

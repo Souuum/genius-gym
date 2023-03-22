@@ -12,36 +12,12 @@ export default {
 </script>
 
 <template>
-    <input class="text" type="text" :placeholder="placeHolder" :name="name" />
+    <div class="flex-col w-60">
+    <label class="text-white text-left top-1" :for="name">{{ placeHolder }}</label>
+    <input class="mt-1 max-h-60 w-60 overflow-auto rounded-md bg-secondary py-2 pl-3 pr-10  text-base text-white placeholder-secondary-lighter shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" 
+    type="text" :placeholder="placeHolder" :name="name" />
+    </div>
 </template>
 
 <style>
-.text {
-    margin-top: 5px;
-    font-size: 14px;
-    text-align: center;
-    width: 240px;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    height: 40px;
-    background-color: var(--transparent);
-    backdrop-filter: 5px;
-    font-family: 'ASAP';
-    font-weight: 500;
-}
-
-.text:focus {
-    border-bottom: 2px solid var(--accent2);
-    background-color: var(--lesstransparent);
-
-}
-
-.text:hover {
-    background-color: var(--lesstransparent);
-}
-
-.text::placeholder {
-    color: var(--lesstransparent);
-}
 </style>

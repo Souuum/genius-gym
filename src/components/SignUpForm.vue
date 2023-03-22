@@ -2,6 +2,7 @@
 import TextInput from './TextInput.vue';
 import PasswordInput from './PasswordInput.vue';
 import Button from './Button.vue';
+import SelectInput from './SelectInput.vue';
 export default {
     name: "SignUpForm",
     props: {
@@ -9,48 +10,32 @@ export default {
     components: {
         TextInput,
         PasswordInput,
-        Button
+        Button,
+        SelectInput
     }
 
 }
 </script>
 
 <template>
-    <div class="form-container">
-        <form id="signup">
-            <h1> Sign Up</h1>
+    <div class="form-container bg-secondary flex justify-center justify-items-center items-center ">
+        <form id="signup" class=" bg-secondary-light pt-10 pr-40 pl-40 pb-10 flex-col items-center justify-items-center justify-center rounded-lg">
             <TextInput :placeHolder="'Name'" :name="'name'"></TextInput>
             <TextInput :placeHolder="'Last Name'" :name="'lastName'"></TextInput>
             <TextInput :placeHolder="'Email'" :name="'email'"></TextInput>
-            <PasswordInput></PasswordInput>
-            <Button :text="'Sign up'" :textColor="'var(--lesstransparent)'" :color="'var(--transparent)'"
-                :hoverColor="'var(--lesstransparent)'" :marginTop="'40px'">Submit</Button>
+            <PasswordInput></PasswordInput> 
+            <SelectInput></SelectInput>
+
+            <Button :text="'Sign up'"
+             class=" mt-10 w-32 h-10 rounded-md bg-secondary hover:bg-primary duration-300 font-medium text-white z-0">Submit</Button>
+            <RouterLink to="/LogIn" id="signin-route" class="text-white ml-3 hover:text-primary">Or sign in</RouterLink>
+
         </form>
     </div>
 </template>
 
 <style>
 .form-container {
-    width: 100%;
     height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#signup {
-    margin: 40px;
-    background-color: var(--secondary-light);
-    border-radius: 5px;
-    width: 600px;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-h1 {
-    color: var(--white);
 }
 </style>
