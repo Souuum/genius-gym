@@ -16,7 +16,7 @@ import { RouterLink } from 'vue-router';
     },
     {
       name: 'Custom Programs',
-      href: '##',
+      href: '/customProgram',
 
     },    
     {

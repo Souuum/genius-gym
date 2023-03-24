@@ -65,7 +65,7 @@ export default {
         :class="[
                 'w-full rounded-lg py-2.5 text-lg font-semibold leading-5 text-primary',
                 'ring-secondary-light ring-opacity-60 ring-offset-2 ring-offset-primary focus:bg-secondary-light focus:text-primary focus:outline-none  ',
-                'text-white hover:bg-secondary-light hover:text-primary',
+                 'text-white hover:bg-secondary-light hover:text-primary aria-selected:text-primary aria-selected:bg-secondary-light' 
               ]">{{category}}</button>
         </Tab>
         </TabList>

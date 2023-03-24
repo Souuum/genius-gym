@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import SignUpView from '../views/SignUpView.vue'
 import WorkoutView from '../views/WorkoutView.vue'
+import CustomProgramView from '../views/CustomProgramView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +28,11 @@ const router = createRouter({
       path: '/workout',
       name: 'workout',
       component: WorkoutView
+    },
+    {
+      path: '/customProgram',
+      name: 'customProgram',
+      component: CustomProgramView
     },
     {
       path: '/:pathMatch(.*)*',

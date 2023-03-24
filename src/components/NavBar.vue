@@ -23,7 +23,7 @@ export default {
             <RouterLink to="/workout">
                 <a class="route">Workouts</a>
             </RouterLink>
-            <RouterLink to="/">
+            <RouterLink to="/customProgram">
                 <a class="route">Custom Program</a>
             </RouterLink>
  
