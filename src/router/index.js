@@ -6,6 +6,7 @@ import SignUpView from '../views/SignUpView.vue'
 import WorkoutView from '../views/WorkoutView.vue'
 import CustomProgramView from '../views/CustomProgramView.vue'
 import AccountView from '../views/AccountView.vue'
+import CreateWorkoutView from '../views/CreateWorkoutView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,10 +42,16 @@ const router = createRouter({
       component: AccountView
     },
     {
+      path: '/createWorkout',
+      name: 'CreateWorkout',
+      component: CreateWorkoutView
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'notFoundView',
       component: NotFoundView
-    }
+    },
+
 
   ]
 })

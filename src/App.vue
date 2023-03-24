@@ -3,9 +3,10 @@ import NavBar from './components/NavBar.vue';
 </script>
 
 <template>
+
   <NavBar></NavBar>
 
-  <div class="container">
+  <div class="main flex justify-center">
     <router-view v-slot="{ Component }">
 
       <Transition name="slide-fade" mode="out-in">
@@ -21,6 +22,7 @@ import NavBar from './components/NavBar.vue';
 </template>
 
 <style scoped>
+
 body {
   background: transparent;
   transition: 0.4s;

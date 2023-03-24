@@ -9,6 +9,7 @@ import { TabGroup,
     DisclosurePanel,} from '@headlessui/vue'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 import WorkoutDisclosure from './WorkoutDisclosure.vue'
+import SettingButton from './SettingButton.vue'
 export default {
     name: "WorkoutPreview",
     props: {
@@ -33,6 +34,7 @@ export default {
         DisclosurePanel,
         ChevronDownIcon,
         WorkoutDisclosure,
+        SettingButton
     },    
     mounted() {
     },
@@ -100,7 +102,10 @@ export default {
             :class="open ? 'rotate-180 transform' : ''"
             class="h-8 w-8 text-white"
           />
-        </DisclosureButton>
+            <SettingButton v-if="post.isCustom">
+          </SettingButton>
+
+        </DisclosureButton >
         <DisclosurePanel
         v-for="exercise in post.Exercises"
         :key="exercise.id"

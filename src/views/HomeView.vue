@@ -2,13 +2,15 @@
 import SignUpButton from '../components/SignUpButton.vue';
 import CirclePictureFrame from '../components/CirclePictureFrame.vue';
 import WorkoutView from './WorkoutView.vue';
+import CustomProgramView from './CustomProgramView.vue';
 
 export default {
     'name': "HomeView",
     components: {
         SignUpButton,
         CirclePictureFrame,
-        WorkoutView
+        WorkoutView,
+        CustomProgramView
     },
     data() {
         return {
@@ -45,7 +47,7 @@ export default {
 <template>
     <div class="container">
         <section class="home">
-            <div class="flex float-right mr-20 mt-10">
+            <div class="flex float-right mt-10">
                 <CirclePictureFrame
                     v-bind:style="{ 'background-image': 'url(../../public/images/pexels-murilo-botelho-1865131.jpg)' }"
                     :borderRadius="'60px'"></CirclePictureFrame>
@@ -56,7 +58,7 @@ export default {
                     with a wide variety of exercises for
                     <span class="text-primary text-5xl font-semibold">everyone</span>
                 </p>
-                <SignUpButton></SignUpButton>
+                <SignUpButton :sutext="'Sign up'"></SignUpButton>
             </div>
             <div class="flex justify-center self-end w-full min-h-full bottom-0">
                 <transition name="fade">
@@ -71,12 +73,19 @@ export default {
         <section class="workouts flex flex-col justify-center ">
             <WorkoutView></WorkoutView>
         </section>
+        <section class="customProgram flex justify-center">
+            <CustomProgramView></CustomProgramView>
+        </section>
     </div>
 </template>
 
 
 <style>
 
+.container {
+    transition: 0.4s;
+    width: 100vh;
+}
 
 section {
     height: 80vh;

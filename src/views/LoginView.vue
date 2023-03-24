@@ -18,6 +18,6 @@ export default {
 
 <style> .container {
      transition: 0.4s;
-     width: 100%;
+     width: 100vh;
  }
 </style>
