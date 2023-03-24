@@ -12,6 +12,40 @@ export default {
         PasswordInput,
         Button,
         RouterLink
+    },
+    methods: {
+        async signin(credentials) {
+            console.log(credentials);
+            const _check = await fetch(`http://localhost:3000/auth/login`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(credentials),
+    })
+        .then((response) => response.json())
+        .then((json) => {
+            return json;
+        })
+        .catch((err) => console.warn(err));
+
+            if (_check && _check.authenticated) {
+                console.log("You successfully signed in!");
+                this.$store.dispatch('user', _check.user);
+            } else {
+                console.log(
+                    "Sign in failed",
+                    _check.message ? _check.message : "Error"
+                );
+            }
+
+        },
+        getFormValues (submitEvent) {
+            const formData = new FormData(submitEvent.target);
+            const credentials = Object.fromEntries(formData);
+            console.log(credentials);
+            this.signin(credentials);
+        }
     }
 
 }
@@ -19,9 +53,10 @@ export default {
 
 <template>
     <div class="form-container flex items-center justify-center">
-        <form id="signin" class="bg-secondary-light pt-10 pr-40 pl-40 pb-10 flex-col items-center justify-items-center justify-center rounded-lg">
-            <TextInput :placeHolder="'Email'" :name="'email'"></TextInput>
-            <PasswordInput></PasswordInput>
+        <form id="signin"  onsubmit="return false" @submit.prevent="getFormValues"
+        class="bg-secondary-light pt-10 pr-40 pl-40 pb-10 flex-col items-center justify-items-center justify-center rounded-lg">
+            <TextInput :type="'text'" :placeHolder="'Email'" :name="'email'"></TextInput>
+            <TextInput :type="'password'" :placeHolder="'Password'" :name="'password'"></TextInput>
             <Button :text="'Sign in'"
             class=" self-center mt-10 w-32 h-10 rounded-md bg-secondary hover:bg-primary duration-300 font-medium text-white">Submit</Button>
             <RouterLink to="/signUp" id="signup-route" class="text-white ml-3 hover:text-primary">Or sign up</RouterLink>

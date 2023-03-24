@@ -16,7 +16,6 @@ export default {
     },
     computed: {
         getWorkouts() {
-            console.log(this.workouts);
             return this.workouts;
         }
     },
@@ -38,7 +37,6 @@ export default {
                     return acc;
                     }, {});
 
-                    console.log(workoutsByCategory);
 
 
                 wk.workouts = workoutsByCategory;
@@ -46,6 +44,10 @@ export default {
 
                 // console.log(wk.workouts)
             });
+    },
+    mounted() {
+        console.log(this.$store.state.user)
+
     },
 };
 

@@ -12,6 +12,34 @@ export default {
         PasswordInput,
         Button,
         SelectInput
+    },
+    methods: {
+        async signup(credentials) {
+            console.log(credentials);
+            const _check = await fetch(`http://localhost:3000/auth/signup`, {
+                            method: "POST",
+                            headers: {
+                            "Content-Type": "application/json",
+            },
+        body: JSON.stringify(credentials),
+    })
+        .then((response) => response.json())
+        .catch((err) => console.log(err));;
+            if (_check && _check.response) {
+                console.log("You successfully signed up!");
+            } else {
+                console.log(
+                    "Sign up failed",
+                    _check.message ? _check.message : "Error"
+                );
+            }
+        },
+        getFormValues (submitEvent) {
+            const formData = new FormData(submitEvent.target);
+            const credentials = Object.fromEntries(formData);
+            console.log(credentials);
+            this.signup(credentials);
+        }
     }
 
 }
@@ -19,11 +47,12 @@ export default {
 
 <template>
     <div class="form-container bg-secondary flex justify-center justify-items-center items-center ">
-        <form id="signup" class=" bg-secondary-light pt-10 pr-40 pl-40 pb-10 flex-col items-center justify-items-center justify-center rounded-lg">
-            <TextInput :placeHolder="'Name'" :name="'name'"></TextInput>
-            <TextInput :placeHolder="'Last Name'" :name="'lastName'"></TextInput>
-            <TextInput :placeHolder="'Email'" :name="'email'"></TextInput>
-            <PasswordInput></PasswordInput> 
+        <form id="signup" onsubmit="return false" @submit.prevent="getFormValues"
+        class=" bg-secondary-light pt-10 pr-40 pl-40 pb-10 flex-col items-center justify-items-center justify-center rounded-lg">
+            <TextInput :type="'text'" :placeHolder="'Name'" :name="'firstName'"></TextInput>
+            <TextInput :type="'text'" :placeHolder="'Last Name'" :name="'lastName'"></TextInput>
+            <TextInput :type="'text'" :placeHolder="'Email'" :name="'email'"></TextInput>
+            <TextInput :type="'password'" :placeHolder="'Password'" :name="'password'"></TextInput>
             <SelectInput></SelectInput>
 
             <Button :text="'Sign up'"

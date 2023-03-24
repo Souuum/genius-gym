@@ -32,6 +32,7 @@ export default {
     },
 
     mounted() {
+        console.log(this.$store.state.user)
         window.addEventListener('scroll', this.handleScroll);
     },
     beforeDestroy() {

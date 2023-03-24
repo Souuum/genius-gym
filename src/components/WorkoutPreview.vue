@@ -35,7 +35,6 @@ export default {
         WorkoutDisclosure,
     },    
     mounted() {
-        console.log(this.$props.workouts);
     },
     beforeMount() {
         var wk = this;
@@ -46,7 +45,6 @@ export default {
     },
     computed: {
         getExercise(e) {
-            console.log(e);
             return e;
         },
     },
@@ -56,20 +54,18 @@ export default {
 
 <template>
     <div class="w-full max-w-md px-2 py-16 sm:px-0 flex-col justify-center">
-        <TabGroup>
+        <TabGroup :defaultIndex="1">
         <TabList class="flex space-x-1 rounded-xl p-1">
         <Tab class="flex space-x-1 rounded-xl p-1"
         v-for="category in Object.keys(workouts)"
         as="template"
         :key="category"
-        :v-slot="{ selected }"
         >
         <button          
         :class="[
                 'w-full rounded-lg py-2.5 text-lg font-semibold leading-5 text-primary',
                 'ring-secondary-light ring-opacity-60 ring-offset-2 ring-offset-primary focus:bg-secondary-light focus:text-primary focus:outline-none  ',
-                selected ? 'bg-white shadow'
-                    : 'text-white hover:bg-secondary-light hover:text-primary',
+                'text-white hover:bg-secondary-light hover:text-primary',
               ]">{{category}}</button>
         </Tab>
         </TabList>
