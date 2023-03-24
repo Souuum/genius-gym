@@ -1,10 +1,16 @@
-<script setup>
+<script>
 
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 import { RouterLink } from 'vue-router';
   
-  const routes = [
+  export default {
+    name: 'CustomMenu',
+    components: { Popover, PopoverButton, PopoverPanel, ChevronDownIcon, RouterLink },
+    data () {
+        var account = this.$store.state.user ? {"name" : "Account", "href" : "/account"} : { "name" : "Login", "href" : "/login"};
+        return {
+            routes : [
     {
       name: 'Home',
 
@@ -18,13 +24,23 @@ import { RouterLink } from 'vue-router';
       name: 'Custom Programs',
       href: '/customProgram',
 
-    },    
-    {
-      name: 'Log in',
-      href: '/login',
-
     },
+    account,
   ]
+        }
+    },
+    methods: {
+        observeStore() {
+            this.$store.subscribe((mutation, state) => {
+                if (mutation.type == "setUser") {
+                    this.account = state.user ? {"route" : "/account", "name" : "Account"} : {"route" : "/login", "name" : "Login"};
+                    console.log('changed');
+                    console.log(this.account);
+                }
+            })
+        }
+    }
+  }
 
 </script>
   

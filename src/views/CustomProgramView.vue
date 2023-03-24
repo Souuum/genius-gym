@@ -14,8 +14,14 @@ export default{
 
 
 <template>
-    <h1>{{ message }}</h1>
+    <div class="container">
+        <h1>{{ message }}</h1>
+    </div>
 </template>
 
 
-<style></style>
+<style>
+.container {
+     transition: 0.4s;
+     width: 100%;
+ }</style>

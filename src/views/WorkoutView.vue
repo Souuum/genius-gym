@@ -54,7 +54,10 @@ export default {
 </script>
 
 <template>
-    <div class="container flex justify-center">
+
+    <div class="container flex justify-center flex-col items-center">
+        <h1 class="text-white text-6xl font-bold text-center mt-40 ">Some of our Workouts</h1>
+
         <WorkoutPreview v-if="isFetched" :workouts="getWorkouts"></WorkoutPreview>
     </div>
 </template>

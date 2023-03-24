@@ -22,7 +22,7 @@ const selectedCat = ref(category[0])
 <template>
     <div class="top-1 w-60">
     <label class="text-white">What kind of athlete are you ?</label>
-      <Listbox v-model="selectedCat">
+      <Listbox v-model="selectedCat" name="trainingType">
         <div class="relative mt-1">
           <ListboxButton
             class="relative w-full cursor-default rounded-lg bg-secondary py-2 pl-3 pr-10 text-left text-white shadow-md focus:outline-none sm:text-sm"

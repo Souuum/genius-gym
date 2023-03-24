@@ -31,7 +31,8 @@ export default {
 
             if (_check && _check.authenticated) {
                 console.log("You successfully signed in!");
-                this.$store.dispatch('user', _check.user);
+                this.$store.commit('setUser', _check.user)
+                // this.$store.dispatch('user', _check.user);
                 this.$router.push('/customProgram');
             } else {
                 console.log(

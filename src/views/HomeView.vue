@@ -69,7 +69,6 @@ export default {
             </div>
         </section>
         <section class="workouts flex flex-col justify-center ">
-            <h1 class="text-white text-6xl font-bold text-center">Some of our Workouts</h1>
             <WorkoutView></WorkoutView>
         </section>
     </div>
