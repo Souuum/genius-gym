@@ -32,13 +32,33 @@ export default {
             }
         }
     },
-
     mounted() {
         console.log(this.$store.state.user)
         window.addEventListener('scroll', this.handleScroll);
     },
     beforeDestroy() {
         window.removeEventListener('scroll', this.handleScroll);
+    },
+    beforeMount() {
+        var user = this.$store.getters.user;
+            var wk = this;
+            console.log('fetching exercises...')
+            fetch(`http://localhost:3000/exercises`)
+                .then((response) => {
+                console.log('exercises fetched');
+                    return response.json();
+                })
+                .then((myJson) => {
+                    if(!myJson){
+                        console.log('no exercises found')
+                        return;
+                    }
+                    else{
+                        console.log('exercises found')
+                        wk.$store.commit('exercises', myJson);
+                        console.log(wk.$store.state.exercises);
+                    }
+                });
     }
 };
 

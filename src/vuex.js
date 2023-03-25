@@ -5,7 +5,8 @@ import { createStore } from 'vuex'
 export default createStore({
     state: {
         user: null,
-        cworkouts: null
+        cworkouts: null,
+        exercises: null
     },
     getters: {
         user: (state) => {
@@ -13,6 +14,9 @@ export default createStore({
         },
         cworkouts: (state) => {
             return state.cworkouts
+        },
+        exericses: (state) => {
+            return state.exercises
         }
     },
     actions: {
@@ -21,6 +25,12 @@ export default createStore({
         },
         setUser(context, user) {
             context.commit('setUser', user)
+        },
+        cworkouts(context, cworkouts) {
+            context.commit('cworkouts', cworkouts)
+        },
+        exercises(context, exercises) {
+            context.commit('exercises', exercises)
         }
     },
     mutations: {
@@ -35,6 +45,10 @@ export default createStore({
         cworkouts(state, cworkouts) {
             console.log('cworkouts: ' + cworkouts)
             state.cworkouts = cworkouts
+        },
+        exercises(state, exercises) {
+            console.log('exercises: ' + exercises)
+            state.exercises = exercises
         }
     }
 })

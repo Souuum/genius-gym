@@ -69,7 +69,7 @@ export default{
                             
                         });
                         wk.isFetched = true;
-                        wk.$store.commit('cWorkouts', workoutsByCategory);
+                        wk.$store.commit('cworkouts', workoutsByCategory);
                     }
                 });
         }

@@ -1,10 +1,11 @@
 <script>
-import MdSettingsIcon from 'vue-ionicons/dist/md-settings.vue'
+
+import MdAddCircleIcon from 'vue-ionicons/dist/md-add-circle.vue'
 
 export default {
     name: "SettingButton",
     components: {
-        MdSettingsIcon,
+        MdAddCircleIcon,
     },
 
 }
@@ -14,7 +15,7 @@ export default {
 
 <template>
     <button class="flex items-center justify-center ">
-        <MdSettingsIcon  w="24px" h="24px" animate="rotate" class="mt-1"></MdSettingsIcon>
+        <MdAddCircleIcon w="30px" h="30px" animate="beat" class="hover:text-primary"></MdAddCircleIcon>
     </button>
 </template>
 

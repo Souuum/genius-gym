@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@headlessui/vue": "^1.7.12",
+    "@headlessui/vue": "^0.0.0-insiders.f4e9710",
     "@heroicons/vue": "^2.0.16",
     "autoprefixer": "^10",
     "heroicons": "^2.0.16",
