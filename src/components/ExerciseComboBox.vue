@@ -46,6 +46,14 @@ export default {
   beforeMount() {
     this.$store.dispatch('fetchExercises')
   },
+  methods: {
+  handleSelectionChange(value) {
+    this.$emit('selection-change', value);
+  },
+    onInput(selectedValue) {
+      this.$emit('input', selectedValue);
+    }
+    }
 }
 </script>
 
@@ -54,7 +62,7 @@ export default {
 
 <template>
     <div class="w-72">
-      <Combobox v-model="selected">
+      <Combobox v-model="selected" @input="onInput">
         <div class="relative mt-1">
           <div
             class="relative w-full cursor-default overflow-hidden rounded-md bg-primary text-left shadow-md focus:outline-none sm:text-sm"
@@ -62,7 +70,8 @@ export default {
             <ComboboxInput
               class="w-full border-none py-2 pl-3 pr-10 leading-5 text-semibold text-white  bg-secondary-light"
               :displayValue="(exercise) => exercise"
-              @change="query = $event.target.value"
+              @change="{query = $event.target.value;
+              handleSelectionChange(query)}"
             />
             <ComboboxButton
               class="absolute inset-y-0 right-0 flex items-center pr-2"
@@ -95,6 +104,7 @@ export default {
                 :key="exercise.id"
                 :value="exercise.name"
                 v-slot="{ selected, active }"
+                @click="handleSelectionChange(exercise.name)"
               >
                 <li
                   class="relative cursor-default select-none py-2 pl-10 pr-4"

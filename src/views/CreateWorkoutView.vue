@@ -13,6 +13,8 @@ export default{
             user,
             isFetched: false,
             exercises : [],
+            selectedExercise: null
+
         };
     },
     components: { SignUpButton,
@@ -27,6 +29,9 @@ export default{
         },
         getExercises() {
             return this.$store.getters.exercises;
+        },
+        checkSelected() {
+            return this.$store.getters.selectedExercise;
         }
     },
     beforeMount() {
@@ -51,6 +56,16 @@ export default{
                     }
                 });
     },
+  methods: {
+    handleSelectionChange(value) {
+      console.log(value)
+      this.selectedExercise = value;
+    },
+    addExercise(exercise) {
+        this.$store.commit('selectedExercise', exercise);
+        console.log(this.$store.getters.selectedExercise)
+    }
+  }
 }
 </script>
 
@@ -80,11 +95,12 @@ export default{
                     <div class="mt-40">
                 <h3 class="text-white text-l font-semibold">Select an exercise to add to your workout</h3>
                 <div class=" mr-96 flex flex-row">
-                    <ExerciseComboBox></ExerciseComboBox>
-                    <AddExerciseButton class="ml-4"></AddExerciseButton>
+                    <ExerciseComboBox v-model="selectedExercise" @selection-change="handleSelectionChange" ></ExerciseComboBox>
+                    <AddExerciseButton class="ml-4" @click="addExercise(selectedExercise)" ></AddExerciseButton>
                 </div>
                 </div>
                     <ExerciseList></ExerciseList>
+                    <p>Selected exercise: {{ selectedExercise }}</p>
 
 
                 </div>

@@ -100,8 +100,11 @@ export default{
                     <span class="text-primary text-6xl font-bold text-center mt-40">your</span>
                     program space
                 </h1>
-                <div class="flex justify-center" v-if="workouts.length==0">
-                <p>You don't have any custom workout yet</p>
+                <div class="flex justify-center items-center flex-col" v-if="workouts.length==0">
+                    <h3 class="text-white text-3xl font-bold text-center mt-20">You don't have any custom program yet</h3>
+
+                    <AddProgramButton :sutext="'Add a Program'" class="mt-20"></AddProgramButton>
+
                 </div>
                 <div class="flex flex-col justify-center items-center" v-else>
                 <WorkoutPreview v-if="isFetched" :workouts="getWorkouts"></WorkoutPreview>
