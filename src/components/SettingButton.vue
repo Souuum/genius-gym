@@ -6,6 +6,11 @@ export default {
     components: {
         MdSettingsIcon,
     },
+    methods: {
+    modify() {
+      this.$emit('modify');
+    },
+}, 
 
 }
 
@@ -13,8 +18,10 @@ export default {
 
 
 <template>
-    <button class="flex items-center justify-center ">
-        <MdSettingsIcon  w="24px" h="24px" animate="rotate" class="mt-1"></MdSettingsIcon>
+    <button class="flex items-center justify-center " @click="modify()">
+        <RouterLink to="/modifyWorkout" id="modify-route" class="sutext">
+            <MdSettingsIcon  w="24px" h="24px" animate="rotate" class="mt-1"></MdSettingsIcon>
+        </RouterLink>
     </button>
 </template>
 

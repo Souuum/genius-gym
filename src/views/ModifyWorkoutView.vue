@@ -11,12 +11,21 @@ export default{
     name: "CustomProgramView",
     data() {
         var user = this.$store.getters.user;
+        var workout = this.$store.getters.selectedWorkout;
+        var workoutName = workout.name;
+        var workoutDescription = workout.description;
+        var workoutId = workout.id;
+        var exercises = workout.Exercises;
+        var category = workout.category;
         return {
             user,
             isFetched: false,
             exercises : [],
-            selectedExercise: null,
-            selectedCategory: 'Weight Training',
+            selectedExercise: exercises,
+            selectedCategory: category,
+            workoutName,
+            workoutDescription,
+            workoutId,
 
         };
     },
@@ -66,6 +75,7 @@ export default{
                         this.$store.commit('selectedExercise',myJson[0] );   
                     }
                 });
+
     },
   methods: {
     handleSelectionChange(value) {
@@ -88,24 +98,24 @@ export default{
         this.$store.commit('selectedExercise', exercise);
         console.log(this.$store.getters.selectedExercise)
     },
-    createWorkout() {
+    modifyWorkout() {
     console.log('creating workout')
     var wk = this;
 
   },
-  getFormValues(submitEvent) {
+  sendModify(submitEvent) {
             const formData = new FormData(submitEvent.target);
             formData.append('userId', this.user.id);
             console.log('adding exercise')
             console.log(this.$store.getters.selectedExerciseList)
             let workout = {
+                id: this.workoutId,
                 name: formData.get('Workout name'),
                 description: formData.get('description'),
                 category: this.selectedCategory,
                 isCustom: true,
             }
             let exerciseList = JSON.stringify(this.$store.getters.selectedExerciseList) ;
-            let workout_exercises = [];
             console.log(exerciseList)
             formData.append('Workout', JSON.stringify(workout));
             formData.append('Exercise', exerciseList);
@@ -113,7 +123,7 @@ export default{
             console.log(credentials)
 
             //calling api
-            fetch('http://localhost:3000/workouts/custom/exercises', {
+            fetch('http://localhost:3000/workouts/custom/modify', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -122,8 +132,8 @@ export default{
             })
                 .then((response) => {
                     if (response.status === 200) {
-                        console.log('workout created');
-                        alert('Workout created successfully')
+                        console.log('workout modified');
+                        alert('Workout modified successfully')
                         this.$router.push('/customProgram');
                     } else {
                         console.log('workout not created');
@@ -157,11 +167,11 @@ export default{
     </div>
     <div class="container" v-else>
         <div class="flex flex-col">
-                <h1 class="text-white text-6xl font-bold text-center mt-40">Add 
+                <h1 class="text-white text-6xl font-bold text-center mt-40">Modify
                     <span class="text-primary text-6xl font-bold text-center mt-40">your</span>
                     workout
                 </h1>
-                <form @submit.prevent="getFormValues">
+                <form @submit.prevent="sendModify">
                 <div class="flex flex-row justify-between">
                     <div class="mt-20">
                 <h3 class="text-white text-l font-semibold leading-5 mb-2">Select an exercise to add to your workout</h3>
@@ -170,18 +180,16 @@ export default{
                     <AddExerciseButton class="ml-4" @click.prevent="addExercise(selectedExercise)" ></AddExerciseButton>
                 </div>
                 </div>
-                    <ExerciseList class="ml-40"></ExerciseList>
+                    <ExerciseList class="ml-40" :modify="true"></ExerciseList>
                     <!-- <p>Selected exercise: {{ selectedExercise }}</p> -->
                     <div class="flex flex-col justify-center items-center bg-secondary-light rounded-xl px-4 py-4 h-fit mt-24 mr-20">
-                    <TextInput :type="'text'" :placeHolder="'Workout Name'" :name="'Workout name'"></TextInput>
+                    <TextInput :type="'text'" :placeHolder="'Workout Name'" :value="workoutName" :name="'Workout name'"></TextInput>
                     <CategoryComboBox v-model="selectedCategory" @selection-change="handleCategoryChange" class="mt-4"></CategoryComboBox>
-                    <TextInput :type="'desc'" :placeHolder="'Description'" :name="'description'" class="mt-32"></TextInput>
-                    <Button :text="'Create'"  
-                    @click="$event => createWorkout($event)"
-                class=" self-center mt-10 w-32 h-10 rounded-md bg-secondary hover:bg-primary duration-300 font-medium text-white">Create</Button>
+                    <TextInput :type="'desc'" :placeHolder="Description" :value="workoutDescription" :name="'description'" class="mt-32"></TextInput>
+                    <Button :text="'Modify'"  
+                    @click="$event => modifyWorkout($event)"
+                class=" self-center mt-10 w-32 h-10 rounded-md bg-secondary hover:bg-primary duration-300 font-medium text-white">Modify</Button>
                     </div>
-
-
                 </div>
             </form>
 

@@ -27,11 +27,14 @@ export default {
         .catch((err) => console.log(err));;
             if (_check && _check.response) {
                 console.log("You successfully signed up!");
+                alert("You successfully signed up!");
+                this.$router.push('/LogIn');
             } else {
                 console.log(
                     "Sign up failed",
                     _check.message ? _check.message : "Error"
                 );
+                alert("Sign up failed");
             }
         },
         getFormValues (submitEvent) {
@@ -49,7 +52,7 @@ export default {
     <div class="form-container bg-secondary flex justify-center justify-items-center items-center ">
         <form id="signup" onsubmit="return false" @submit.prevent="getFormValues"
         class=" bg-secondary-light pt-10 pr-40 pl-40 pb-10 flex-col items-center justify-items-center justify-center rounded-lg">
-            <TextInput :type="'text'" :placeHolder="'Name'" :name="'firstName'"></TextInput>
+            <TextInput :type="'text'" :placeHolder="'First Name'" :name="'firstName'"></TextInput>
             <TextInput :type="'text'" :placeHolder="'Last Name'" :name="'lastName'"></TextInput>
             <TextInput :type="'text'" :placeHolder="'Email'" :name="'email'"></TextInput>
             <TextInput :type="'password'" :placeHolder="'Password'" :name="'password'"></TextInput>

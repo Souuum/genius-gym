@@ -11,6 +11,9 @@ import { mapGetters } from 'vuex';
 
 export default {
     name: "ExerciseList",
+    props: {
+        modify : Boolean,
+    },
     methods: {
         addExercise() {
     const selectedExerciseData = this.selectedExerciseData;
@@ -40,6 +43,24 @@ removeExercise(exercise) {
 },
     },
     data() {
+
+        if(this.modify){
+            console.log('modify is true')
+            console.log(this.$store.getters.selectedExerciseList)
+            let workout = this.$store.getters.selectedWorkout;
+            let cexercises = workout.Exercises
+            cexercises.forEach(element => {
+                element.sets = element.Workout_Exercises.nbSets
+                element.reps = element.Workout_Exercises.nbReps
+            });
+            return {
+                hiddenexercises : [],
+                exercises : cexercises,
+                isFetched: false,
+                selectedExerciseName: [],
+                selectedExercises: [],
+            }
+        }
         return {
             hiddenexercises : [],
             exercises : [],
@@ -110,7 +131,7 @@ removeExercise(exercise) {
 </script>
 
 <template>
-    <div class="container">
+    <div class="container" v-if="!modify">
     <div class="flex flex-col space-y-1 max-w-lg  mt-20" >
         <h1 class=" text-l font-semibold leading-5 text-center mb-2">Exercises</h1>
 
@@ -153,8 +174,50 @@ removeExercise(exercise) {
     </div>
     </div>
 </div>
+</div>
+<div class="container" v-else>
+    <div class="flex flex-col space-y-1 max-w-lg  mt-20" >
+        <h1 class=" text-l font-semibold leading-5 text-center mb-2">Exercises</h1>
 
+    <div class=" max-w-lg bg-secondary-light px-4 py-4 rounded-xl">
 
+        <div class="flex flex-col space-y-1 ">
+    <li v-for="exercise in exercises"
+    class="w-full bg-secondary font-medium text-white rounded-md"
+    :key="exercise.id">
+        <Disclosure v-slot="{ open }" >
+            <DisclosureButton class="flex flex-col items-center w-full justify-between rounded-lg bg-secondary px-4 py-2" @click.prevent>
+            <div class="flex w-full justify-between items-center rounded-lg bg-secondary px-4 py-2" >
+                <h3 class="text-l font-bold leading-5  w-24 ">
+                    {{ exercise.name }}
+                </h3>
+                <div class="flex items-center space-x-1">
+                    <label for="reps" class="text-sm font-semibold">Reps:</label>
+                    <input required name="reps"  type="number" min="1" max="100" v-model.number="exercise.reps" class="w-12 border-gray-300 rounded-md text-sm bg-secondary-lighter text-white">
+                </div>
+                <div class="flex items-center space-x-1">
+                    <label for="sets" class="text-sm font-semibold">Sets:</label>
+                    <input required name="sets" type="number" min="1" max="10" v-model.number="exercise.sets" class="w-12 border-gray-300 rounded-md text-sm bg-secondary-lighter text-white">
+                </div>
+                <RemoveExerciseButton @remove-exercise="removeExercise(exercise)"/>
+
+            </div>    
+                <div>
+            <ul
+                  class="mt-1 flex-col justify-start text-sm leading-4"
+                >
+                  <li class="w-full rounded-md bg-secondary-lighter px-4 py-2 font-medium text-white">{{ exercise.description }}</li>
+                </ul>
+                </div>
+
+            </DisclosureButton>
+            <DisclosurePanel>
+            </DisclosurePanel>
+      </Disclosure> 
+    </li>
+    </div>
+    </div>
+</div>
 </div>
 </template>
 

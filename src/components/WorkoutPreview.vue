@@ -16,6 +16,17 @@ export default {
         workouts: Object,
     },
     methods: {
+        move(post){
+            console.log('moving workout')
+            console.log(post);
+            this.selectWorkout(post);
+            this.$router.push('/modifyWorkout')
+        },
+        selectWorkout(post) {
+      // Dispatch the mutation with the selected workout
+      this.$store.commit('selectedWorkout', post);
+      console.log(this.$store.getters.selectedWorkout)
+    },
     },
     data() {
         return {
@@ -102,7 +113,7 @@ export default {
             :class="open ? 'rotate-180 transform' : ''"
             class="h-8 w-8 text-white"
           />
-            <SettingButton v-if="post.isCustom">
+            <SettingButton v-if="post.isCustom" @click="move(post)">
           </SettingButton>
 
         </DisclosureButton >
