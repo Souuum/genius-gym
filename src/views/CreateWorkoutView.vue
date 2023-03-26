@@ -100,7 +100,7 @@ export default{
                 </div>
                 </div>
                     <ExerciseList></ExerciseList>
-                    <p>Selected exercise: {{ selectedExercise }}</p>
+                    <!-- <p>Selected exercise: {{ selectedExercise }}</p> -->
 
 
                 </div>

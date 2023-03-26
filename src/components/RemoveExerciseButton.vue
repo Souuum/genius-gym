@@ -7,6 +7,11 @@ export default {
     components: {
         MdRemoveCircleIcon,
     },
+    methods: {
+    removeExercise() {
+      this.$emit('remove-exercise');
+    },
+  },
 
 }
 
@@ -14,8 +19,8 @@ export default {
 
 
 <template>
-    <button class="flex items-center justify-center ">
-        <MdRemoveCircleIcon w="30px" h="30px" animate="beat" class="hover:text-primary"></MdRemoveCircleIcon>
+    <button class="flex items-center justify-center   " @click="removeExercise">
+        <MdRemoveCircleIcon w="30px" h="30px" animate="beat" class="hover:text-primary hover:cursor-pointer"></MdRemoveCircleIcon>
     </button>
 </template>
 
