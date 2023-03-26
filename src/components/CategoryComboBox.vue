@@ -23,14 +23,11 @@ export default {
     ChevronUpDownIcon,
   },
   computed: {
-    ...mapState({
-      exercises: (state) => state.exercises,
-    }),
-    filteredExercises() {
+    filteredCategories() {
       return this.query === ''
-        ? this.exercises
-        : this.exercises.filter((exercise) =>
-            exercise.name
+        ? this.categories
+        : this.categories.filter((category) =>
+            category.name
               .toLowerCase()
               .replace(/\s+/g, '')
               .includes(this.query.toLowerCase().replace(/\s+/g, ''))
@@ -39,12 +36,15 @@ export default {
   },
   data() {
     return {
-      selected: ref("rowing"),
       query: ref(''),
-    }
-  },
-  beforeMount() {
+      categories: [
+        { id: 1, name: 'Weight Training' },
+        { id: 2, name: 'Calisthenic' },
+        { id: 3, name: 'Mixed' },
+      ],
+      selected: ref("Weight Training"),
 
+    }
   },
   methods: {
   handleSelectionChange(value) {
@@ -53,11 +53,12 @@ export default {
     onInput(selectedValue) {
       this.$emit('input', selectedValue);
     }
-    }
+    },
+    mounted() {
+    this.$emit('input', this.selected.value);
+  }
 }
 </script>
-
-  
 
 
 <template>
@@ -68,8 +69,8 @@ export default {
             class="relative w-full cursor-default overflow-hidden rounded-md bg-primary text-left shadow-md focus:outline-none sm:text-sm"
           >
             <ComboboxInput
-              class="w-full border-none py-2 pl-3 pr-10 leading-5 text-semibold text-white  bg-secondary-light"
-              :displayValue="(exercise) => exercise"
+              class="w-full border-none py-2 pl-3 pr-10 leading-5 text-semibold text-white  bg-secondary"
+              :displayValue="(category) => category"
               @change="{query = $event.target.value;
               handleSelectionChange(query)}"
             />
@@ -92,19 +93,19 @@ export default {
               class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-secondary-lighter py-1 text-white shadow-lg  sm:text-sm"
             >
               <div
-                v-if="filteredExercises.length === 0 && query !== ''"
+                v-if="filteredCategories.length === 0 && query !== ''"
                 class="relative cursor-default select-none py-2 px-4 text-gray-700"
               >
                 Nothing found.
               </div>
   
               <ComboboxOption
-                v-for="exercise in filteredExercises"
+                v-for="category in filteredCategories"
                 as="template"
-                :key="exercise.id"
-                :value="exercise.name"
+                :key="category.id"
+                :value="category.name"
                 v-slot="{ selected, active }"
-                @click="handleSelectionChange(exercise.name)"
+                @click="handleSelectionChange(category.name)"
               >
                 <li
                   class="relative cursor-default select-none py-2 pl-10 pr-4"
@@ -117,7 +118,7 @@ export default {
                     class="block truncate"
                     :class="{ 'font-medium': selected, 'font-semibold': !selected }"
                   >
-                    {{ exercise.name }}
+                    {{ category.name }}
                   </span>
                   <span
                     v-if="selected"
@@ -134,3 +135,4 @@ export default {
       </Combobox>
     </div>
   </template>
+  

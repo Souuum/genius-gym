@@ -7,7 +7,12 @@ export default {
         textColor: String,
         hoverColor: String,
         marginTop: String,
-    }
+    },
+    methods: {
+    clickEvent() {
+      this.$emit('click-event');
+    },
+  },
 
 }
 

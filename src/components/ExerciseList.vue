@@ -19,7 +19,9 @@ export default {
       if (!exerciseExists) {
         this.exercises.push(selectedExerciseData);
         console.log('exercise added');
-        console.log(this.exercises);
+        //upadte the store
+        this.$store.commit('selectedExerciseList', this.exercises);
+        console.log(this.$store.getters.selectedExerciseList);
       } else {
         console.log('exercise already exists');
       }
@@ -72,6 +74,11 @@ removeExercise(exercise) {
                     else{
                         console.log('exercises found')
                         wk.$store.commit('exercises', myJson);
+                        //default value for sets and reps
+                        myJson.forEach(element => {
+                            element.sets = 3;
+                            element.reps = 10;
+                        });
                         wk.hiddenexercises = myJson;
                         wk.isFetched = true;
                         console.log(wk.hiddenexercises)
@@ -83,6 +90,9 @@ removeExercise(exercise) {
         },
         ...mapGetters(['selectedExercise']),
         selectedExerciseData() { //Look for the corresponding exercise in the exercises array
+            if(!this.selectedExercise){
+                console.log('no exercise selected')
+            }
         return this.hiddenexercises.find(
             (exercise) => exercise.name === this.$store.getters.selectedExercise
         )
@@ -102,7 +112,7 @@ removeExercise(exercise) {
 <template>
     <div class="container">
     <div class="flex flex-col space-y-1 max-w-lg  mt-20" >
-        <h1 class=" text-lg font-semibold leading-5 text-center mb-2">Exercises</h1>
+        <h1 class=" text-l font-semibold leading-5 text-center mb-2">Exercises</h1>
 
     <div class=" max-w-lg bg-secondary-light px-4 py-4 rounded-xl">
 
@@ -111,18 +121,18 @@ removeExercise(exercise) {
     class="w-full bg-secondary font-medium text-white rounded-md"
     :key="exercise.id">
         <Disclosure v-slot="{ open }" >
-            <DisclosureButton class="flex flex-col w-full justify-between rounded-lg bg-secondary px-4 py-2" @click.prevent>
+            <DisclosureButton class="flex flex-col items-center w-full justify-between rounded-lg bg-secondary px-4 py-2" @click.prevent>
             <div class="flex w-full justify-between items-center rounded-lg bg-secondary px-4 py-2" >
                 <h3 class="text-l font-bold leading-5  w-24 ">
                     {{ exercise.name }}
                 </h3>
                 <div class="flex items-center space-x-1">
                     <label for="reps" class="text-sm font-semibold">Reps:</label>
-                    <input id="reps" type="number" min="1" max="100" v-model.number="exercise.reps" class="w-12 border-gray-300 rounded-md text-sm">
+                    <input required name="reps"  type="number" min="1" max="100" v-model.number="exercise.reps" class="w-12 border-gray-300 rounded-md text-sm bg-secondary-lighter text-white">
                 </div>
                 <div class="flex items-center space-x-1">
                     <label for="sets" class="text-sm font-semibold">Sets:</label>
-                    <input id="sets" type="number" min="1" max="10" v-model.number="exercise.sets" class="w-12 border-gray-300 rounded-md text-sm">
+                    <input required name="sets" type="number" min="1" max="10" v-model.number="exercise.sets" class="w-12 border-gray-300 rounded-md text-sm bg-secondary-lighter text-white">
                 </div>
                 <RemoveExerciseButton @remove-exercise="removeExercise(exercise)"/>
 

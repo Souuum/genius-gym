@@ -7,7 +7,8 @@ export default createStore({
         user: null,
         cworkouts: null,
         exercises: null,
-        selectedExercise: null
+        selectedExercise: null,
+        selectedExerciseList: null
     },
     getters: {
         user: (state) => {
@@ -21,7 +22,11 @@ export default createStore({
         },
         selectedExercise: (state) => {
             return state.selectedExercise
+        },
+        selectedExerciseList: (state) => {
+            return state.selectedExerciseList
         }
+
     },
     actions: {
         user(context, user) {
@@ -38,7 +43,11 @@ export default createStore({
         },
         selectedExercise(context, selectedExercise) {
             context.commit('selectedExercise', selectedExercise)
+        },
+        selectedExerciseList(context, selectedExerciseList) {
+            context.commit('selectedExerciseList', selectedExerciseList)
         }
+
     },
     mutations: {
         user(state, user) {
@@ -60,6 +69,10 @@ export default createStore({
         selectedExercise(state, selectedExercise) {
             console.log('selectedExercise: ' + selectedExercise)
             state.selectedExercise = selectedExercise
+        },
+        selectedExerciseList(state, selectedExerciseList) {
+            console.log('selectedExerciseList: ' + selectedExerciseList)
+            state.selectedExerciseList = selectedExerciseList
         }
     }
 })
