@@ -94,7 +94,8 @@ export default{
 
   },
   getFormValues(submitEvent) {
-            const formData = new FormData(submitEvent.target);
+    if(user){
+        const formData = new FormData(submitEvent.target);
             formData.append('userId', this.user.id);
             console.log('adding exercise')
             console.log(this.$store.getters.selectedExerciseList)
@@ -132,6 +133,8 @@ export default{
                 .catch((error) => {
                     console.error('Error:', error);
                 });
+    }
+
      },
   },
 
