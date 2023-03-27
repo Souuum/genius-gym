@@ -29,6 +29,7 @@ export default{
     },
     beforeMount() {
         var user = this.$store.getters.user;
+        if(user){
             var wk = this;
             var userid = user.id;
 
@@ -71,7 +72,7 @@ export default{
                         wk.$store.commit('cworkouts', workoutsByCategory);
                     }
                 });
-        
+        }
     }
 }
 </script>
