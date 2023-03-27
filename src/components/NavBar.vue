@@ -161,13 +161,11 @@ export default {
 p {
     text-decoration: none;
     transition: 0.4s;
-    font-family: 'ASAP';
 
 }
 
 .route {
     color: var(--white);
-    font-family: 'ASAP';
     font-weight: 600;
     font-size: 24px;
 }
