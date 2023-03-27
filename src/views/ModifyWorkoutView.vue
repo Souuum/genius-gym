@@ -104,7 +104,6 @@ export default{
 
   },
   sendModify(submitEvent) {
-    if(user){
         const formData = new FormData(submitEvent.target);
             formData.append('userId', this.user.id);
             console.log('adding exercise')
@@ -143,7 +142,7 @@ export default{
                 .catch((error) => {
                     console.error('Error:', error);
                 });
-    }
+
 
      },
   },
